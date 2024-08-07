@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { MyService } from './my-service.service';
+import { GetDateService } from './service/get-date.service';
 
 @Component({
   selector: 'app-root',
   // interpolation de la variable message
-  template: '<p>{{message}}</p>',
+  template: '<p>{{jour}}</p>',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'myApp';
+  jour !:string ;
   // déclaration d'une variable message à une chaîne vide
-  message: string = "";
-  // constructeur et injection du service MyService
-  constructor(private myService: MyService) { }
+  // constructeur et injection du service 
+  constructor(private today:GetDateService){}
   // méthode ngOnInit qui retourne rien 
-  ngOnInit(): void {
-    // la variable message prend la valeur de ce que rretourne la méthode getHello() dans la classe MyService
-    this.message = this.myService.getHello();
+  ngOnInit(){
+    this.jour = this.today.getDate();
   }
+    // la variable message prend la valeur de ce que rretourne la méthode getHello() dans la classe MyService
+
 
 }
